@@ -1,5 +1,6 @@
 
 -- RequestScriptAudioBank will be used to load the .awc container that holds all the sounds. Follow the folder structure starting from the resource audiodirectory/custom_sounds
+-- Make sure to call ReleaseNamedScriptAudioBank, once done with the sounds, as only 7 audio bank's can be loaded at once. 
 
 -- The audioRef will be `special_soundset` because we called our soundset that
 -- You can use any sound that you put inside your soundset.
