@@ -23,7 +23,7 @@
   - The sound is not PCM or ADPCM
   - Invalid XML entry (e.g. missing information, such as samples, name etc.)
 
-6. If upon generating the `.awc` container any sounds reports as 0 bytes or only plays a clicking/static sound, this is because the wav file contains unncessary data such as metadata in the file's header, this is the case with FFMPEG and can be resolved by appending `-fflags +bitexact -flags:v +bitexact -flags:a +bitexact` on to the command used to convert the sound.
+6. If upon generating the `.awc` container any sounds reports as 0 bytes or only plays a clicking/static sound instead of its actual sound, It is likely because the wav file contains unncessary data such as metadata in the wav's header, this is the case with FFMPEG and can be resolved with appending  `-fflags +bitexact -flags:v +bitexact -flags:a +bitexact` on to the command used to convert the audio to wav.
 
 ### Now onto making the corresponding `.dat54` file
 
