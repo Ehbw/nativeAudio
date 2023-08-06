@@ -10,7 +10,7 @@
 
 4. Using the template file included that is called `custom_sounds.awc.xml`, I want you to edit this file in whatever IDE you use. I already included 2 example sounds in the template.
     - Firstly change both the `<Name>` and `<FileName>` entries. `<FileName>` is going to be the filename of your converted sound files which you put in the folder `custom_sounds`. `<Name>` however can be anything you want but it is simply easier to keep this the same or rather similar.
-    - `<Codec>` will be `PCM` since we converted the sounds into this format.
+    - `<Codec>` can be either `PCM` or `ADPCM`, it is advised to use ADPCM for its better compression with no noticable loss in sound quality.
     - `<SampleRate>` will be `<SampleRate value="32000" />` because we used the 32kHz sample rate. The `<Samples>` value however needs to be calculated by you by doing `audio duration * sample rate`. If you don't know the exact duration I would highly advise you use [Audacity](https://www.audacityteam.org/) for this part. Once Audacity is installed simply drag the sound into it, double click to select the whole clip. The samples value will be displayed below[^2]. Fill this in inside the `.xml` file.
 
         - Now I'm no audio head, but there are other entries included which you can play with to prepare your sounds before use. But I would keep `<LoopPoint>` at minus 1 because otherwise your sound will keep looping if this is set at 0 for example. Have fun and play around with these entries.
@@ -23,6 +23,7 @@
   - The sound is not PCM or ADPCM
   - Invalid XML entry (e.g. missing information, such as samples, name etc.)
 
+6. If upon generating the `.awc` container any sounds reports as 0 bytes or only plays a clicking/static sound, this is because the wav file contains unncessary data such as metadata in the file's header, this is the case with FFMPEG and can be resolved by appending `-fflags +bitexact -flags:v +bitexact -flags:a +bitexact` on to the command used to convert the sound.
 
 ### Now onto making the corresponding `.dat54` file
 
